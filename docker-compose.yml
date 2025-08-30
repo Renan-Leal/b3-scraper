@@ -1,0 +1,10 @@
+version: "3.9"
+
+services:
+  scraper:
+    build: .
+    container_name: scraper
+    env_file:
+      - .env
+    volumes:
+      - .:/app
