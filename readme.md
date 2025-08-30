@@ -3,6 +3,11 @@
 Project for automated extraction of data from the B3 website (Brazilian Stock Exchange), saving the data in Parquet format and uploading it to an AWS S3 bucket. The project is containerized with Docker and can be orchestrated via Docker Compose.
 
 
+## License
+
+This project is licensed under the [MIT License](https://github.com/Renan-Leal/b3-scraper?tab=MIT-1-ov-file).
+
+
 ## Table of Contents
 
 - [Overview](#overview)
