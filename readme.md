@@ -5,7 +5,7 @@ Project for automated extraction of data from the B3 website (Brazilian Stock Ex
 
 ## License
 
-This project is licensed under the [MIT License](https://github.com/Renan-Leal/b3-scraper?tab=MIT-1-ov-file).
+This project is licensed under the [MIT License](./LICENCE).
 
 
 ## Table of Contents
