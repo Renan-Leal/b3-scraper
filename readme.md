@@ -16,7 +16,6 @@ This project is licensed under the [MIT License](./LICENCE).
 - [Setup](#setup)
 - [Running with Docker](#running-with-docker)
 - [Main Components](#main-components)
-- [Environment Variables](#environment-variables)
 - [Scheduling with Cron](#scheduling-with-cron)
 - [Possible Extensions](#possible-extensions)
 
