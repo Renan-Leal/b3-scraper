@@ -1,4 +1,5 @@
 #!/bin/bash
+CRON_TIMER_CONF="* * * * *"
 
 if [ -z "$CRON_TIMER_CONF" ]; then
   echo "CRON_TIMER_CONF not set. Exiting."

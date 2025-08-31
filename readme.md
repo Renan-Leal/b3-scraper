@@ -113,7 +113,7 @@ Main flow:
 
 ## Scheduling with Cron
 
-The project supports scheduling via cron (default: every minute). Scheduling is configured by the `CRON_TIMER_CONF` variable in `.env`. The `entrypoint.sh` script should configure cron to run the scraper as desired.
+The project supports scheduling via cron (default: every minute). Scheduling is configured by the `CRON_TIMER_CONF` variable in `entrypoint.sh`. The `entrypoint.sh` script should configure cron to run the scraper as desired.
 
 For more information about cron configuration and usage, see the [official cron documentation](https://man7.org/linux/man-pages/man8/cron.8.html).
 
