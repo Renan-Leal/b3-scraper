@@ -14,8 +14,9 @@ class DataHandlerUtils:
         self.df = pd.DataFrame(data, columns=self.table_columns)
 
     def to_parquet_and_upload(self):
+        today = datetime.now()
         timestamp = datetime.now().timestamp()
-        file_name = f"{timestamp}.parquet"
+        file_name = f"{today.year}_{today.month}_{today.day}/{timestamp}.parquet"
         s3_key = f"{self.s3_data_path}/{file_name}"
 
         buffer = BytesIO()
