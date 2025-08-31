@@ -16,7 +16,7 @@ class DataHandlerUtils:
     def to_parquet_and_upload(self):
         today = datetime.now()
         timestamp = datetime.now().timestamp()
-        file_name = f"{today.year}_{today.month}_{today.day}/{timestamp}.parquet"
+        file_name = f"{today.year}{today.month:02d}{today.day:02d}/{timestamp}.parquet"
         s3_key = f"{self.s3_data_path}/{file_name}"
 
         buffer = BytesIO()
