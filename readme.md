@@ -131,3 +131,8 @@ For more information about cron configuration and usage, see the [official cron 
 - Make sure your AWS credentials are correct and have permission to access the S3 bucket.
 - Chrome and ChromeDriver are automatically installed in the container.
 - The volume mapped in Docker Compose allows local development without constant rebuilds.
+
+## AWS Integration
+https://github.com/user-attachments/assets/9035c902-d5f5-4206-9a81-931d7876db94
+
+
