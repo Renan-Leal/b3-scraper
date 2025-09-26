@@ -133,6 +133,6 @@ For more information about cron configuration and usage, see the [official cron 
 - The volume mapped in Docker Compose allows local development without constant rebuilds.
 
 ## AWS Integration
-https://github.com/user-attachments/assets/9035c902-d5f5-4206-9a81-931d7876db94
+![Diagrama-de-Arquitetura](https://github.com/user-attachments/assets/6418c097-371d-4be4-9410-00a32ee5c137)
 
 
