@@ -2,11 +2,9 @@
 
 Project for automated extraction of data from the B3 website (Brazilian Stock Exchange), saving the data in Parquet format and uploading it to an AWS S3 bucket. The project is containerized with Docker and can be orchestrated via Docker Compose.
 
-
 ## License
 
 This project is licensed under the [MIT License](./LICENCE).
-
 
 ## Table of Contents
 
@@ -19,11 +17,9 @@ This project is licensed under the [MIT License](./LICENCE).
 - [Scheduling with Cron](#scheduling-with-cron)
 - [Possible Extensions](#possible-extensions)
 
-
 ## Overview
 
 **b3-scraper** automates the process of collecting IBOVESPA index data directly from the B3 website, processes the data, and stores it in an AWS S3 bucket. The project uses Python, Selenium (with headless Chrome), and is easily runnable via Docker.
-
 
 ## Project Structure
 
@@ -48,7 +44,6 @@ b3-scraper/
         └── data_handler_utils.py
 ```
 
-
 ## How It Works
 
 1. **main.py**: Project entry point. Loads environment variables, initializes the logger, sets up the AWS S3 client, runs the scraper, and uploads the processed data to S3.
@@ -57,7 +52,6 @@ b3-scraper/
 4. **src/utils/data_handler_utils.py**: Handles the extracted data, converts it to Parquet, and uploads it to S3.
 5. **src/infra/logger.py**: Centralized logging configuration.
 6. **entrypoint.sh**: Container startup script (not provided, but referenced in the Dockerfile).
-
 
 ## Setup
 
@@ -71,7 +65,6 @@ b3-scraper/
 2. **Dependencies**  
    All Python dependencies should be listed in `requirements.txt`.
 
-
 ## Running with Docker
 
 ### Build and Run
@@ -82,12 +75,12 @@ docker-compose up --build
 
 The service will start in the `scraper` container, with the code mounted via volume.
 
-
 ## Main Components
 
 ### main.py
 
 Main flow:
+
 - Loads environment variables.
 - Initializes logger.
 - Creates AWS S3 client.
@@ -110,7 +103,6 @@ Main flow:
 
 - Provides custom logging for the project.
 
-
 ## Scheduling with Cron
 
 The project supports scheduling via cron (default: every minute). Scheduling is configured by the `CRON_TIMER_CONF` variable in `entrypoint.sh`. The `entrypoint.sh` script should configure cron to run the scraper as desired.
@@ -125,7 +117,6 @@ For more information about cron configuration and usage, see the [official cron 
 - Export to formats other than Parquet.
 - Monitoring and alerts.
 
-
 ## Notes
 
 - Make sure your AWS credentials are correct and have permission to access the S3 bucket.
@@ -133,6 +124,25 @@ For more information about cron configuration and usage, see the [official cron 
 - The volume mapped in Docker Compose allows local development without constant rebuilds.
 
 ## AWS Integration
+
 ![Diagrama-de-Arquitetura](https://github.com/user-attachments/assets/6418c097-371d-4be4-9410-00a32ee5c137)
 
+### AWS Pipeline
 
+Once the raw data is in **Amazon S3**, the pipeline begins:
+
+- **Lambda Function**: Triggers the **Step Functions workflow** that manages the ETL process with AWS Glue.
+
+### Step Functions Process (ETL with Glue)
+
+The ETL pipeline is divided into three Glue jobs:
+
+1. **Glue Extract Job** → Reads raw data, performs initial cleaning, and stores it in **S3 Extracted Data Path**.
+2. **Glue Transform Job** → Applies transformations and normalization rules, saving results in **S3 Transformed Data Path**.
+3. **Glue Load Job** → Prepares and organizes the final dataset, storing it in **S3 Loaded Data Path**.
+
+### Athena Dashboard
+
+- Processed data can be queried in **Amazon Athena**.
+- SQL queries can be executed directly over the files stored in S3.
+- Results can be visualized using dashboards for analytics and insights.
